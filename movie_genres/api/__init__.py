@@ -1,0 +1,1 @@
+"""REST-like api module."""

@@ -1,0 +1,83 @@
+openapi: "3.0.0"
+info:
+  version: "1.0.0"
+  title: "Movie genres API"
+tags:
+  - name: Movie genres
+
+paths:
+  /genres/train:
+    post:
+      operationId: movie_genres.movie_genres.train_post
+      summary: "Train a model that predicts a movie's genres"
+      tags:
+        - Movie genres
+      requestBody:
+        description: |
+          This endpoint receives a CSV with the columns `movie_id`, `synopsis`, and `genres`, where the latter is a space-separated list of genres that apply to the movie.
+        required: true
+        content:
+          text/csv:
+            schema:
+              type: string
+            example: |
+              movie_id,synopsis,genres
+              29576,"Harry Potter is a young wizard who saves the wizarding world.",Fantasy Drama Adventure Children Mystery
+      responses:
+        "200":
+          description: "The model was trained successfully"
+ 
+  /genres/predict:
+    post:
+      operationId: movie_genres.movie_genres.predict_post
+      summary: "Predict genres for one or more movies"
+      tags:
+        - Movie genres
+      requestBody:
+        description: |
+          This endpoint must support both:
+            1. A JSON object with a single movie `synopsis`
+            2. A CSV with the columns `movie_id` and `synopsis`
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Movie"
+          text/csv:
+            example: |
+              movie_id,synopsis
+              29576,"Harry Potter is a young wizard who saves the wizarding world."
+      responses:
+        "200":
+          description: "The top 5 predicted movie genres"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PredictedGenres"
+            text/csv:
+              schema:
+                type: string
+              example: |
+                movie_id,predicted_genres
+                29576,Fantasy Drama Adventure Children Mystery
+
+components:
+  schemas:
+    Movie:
+      required:
+      - synopsis
+      properties:
+        synopsis:
+          type: string
+          description: "A movie synopsis."
+          example: "Harry Potter is a young wizard who saves the wizarding world."
+    PredictedGenres:
+      required:
+      - predicted_genres
+      properties:
+        predicted_genres:
+          type: array
+          items:
+            type: string
+          description: "The top 5 predicted movie genres"
+          example: ["Fantasy", "Drama", "Adventure", "Children", "Mystery"]

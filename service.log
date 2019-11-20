@@ -1,0 +1,551 @@
+2019-11-20 09:53:41,336 - root - INFO - API started
+2019-11-20 09:53:41,337 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-11-20 09:53:42,210 - WorkSpace(1) - INFO - train
+2019-11-20 09:53:42,735 - TextProcessor - DEBUG - TextProcessor
+2019-11-20 09:53:42,736 - TextProcessor - DEBUG - __fit_tokenizer
+2019-11-20 09:53:44,568 - TextProcessor - DEBUG - __tokenize
+2019-11-20 09:53:45,827 - TextProcessor - DEBUG - __pad
+2019-11-20 09:53:46,062 - Embeddings - DEBUG - read_embeddings
+2019-11-20 09:54:06,259 - root - INFO - API started
+2019-11-20 09:54:06,261 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-11-20 09:54:07,205 - WorkSpace(1) - INFO - train
+2019-11-20 09:54:07,726 - TextProcessor - DEBUG - TextProcessor
+2019-11-20 09:54:07,726 - TextProcessor - DEBUG - __fit_tokenizer
+2019-11-20 09:54:09,580 - TextProcessor - DEBUG - __tokenize
+2019-11-20 09:54:10,902 - TextProcessor - DEBUG - __pad
+2019-11-20 09:54:11,155 - Embeddings - DEBUG - read_embeddings
+2019-11-20 09:54:33,284 - Model - DEBUG - get_model
+2019-11-20 09:54:33,868 - Model - DEBUG - Model: "model"
+2019-11-20 09:54:33,868 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 09:54:33,868 - Model - DEBUG - Layer (type)                    Output Shape         Param #     Connected to                     
+2019-11-20 09:54:33,868 - Model - DEBUG - ==================================================================================================
+2019-11-20 09:54:33,868 - Model - DEBUG - input_1 (InputLayer)            [(None, 150)]        0                                            
+2019-11-20 09:54:33,868 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 09:54:33,868 - Model - DEBUG - embedding (Embedding)           (None, 150, 300)     25410600    input_1[0][0]                    
+2019-11-20 09:54:33,868 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 09:54:33,869 - Model - DEBUG - bidirectional (Bidirectional)   (None, 150, 256)     330240      embedding[0][0]                  
+2019-11-20 09:54:33,869 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 09:54:33,869 - Model - DEBUG - conv1d (Conv1D)                 (None, 148, 64)      49216       bidirectional[0][0]              
+2019-11-20 09:54:33,869 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 09:54:33,869 - Model - DEBUG - global_average_pooling1d (Globa (None, 64)           0           conv1d[0][0]                     
+2019-11-20 09:54:33,869 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 09:54:33,869 - Model - DEBUG - global_max_pooling1d (GlobalMax (None, 64)           0           conv1d[0][0]                     
+2019-11-20 09:54:33,869 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 09:54:33,869 - Model - DEBUG - concatenate (Concatenate)       (None, 128)          0           global_average_pooling1d[0][0]   
+2019-11-20 09:54:33,869 - Model - DEBUG -                                                                  global_max_pooling1d[0][0]       
+2019-11-20 09:54:33,869 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 09:54:33,869 - Model - DEBUG - dense (Dense)                   (None, 19)           2451        concatenate[0][0]                
+2019-11-20 09:54:33,869 - Model - DEBUG - ==================================================================================================
+2019-11-20 09:54:33,870 - Model - DEBUG - Total params: 25,792,507
+2019-11-20 09:54:33,870 - Model - DEBUG - Trainable params: 381,907
+2019-11-20 09:54:33,870 - Model - DEBUG - Non-trainable params: 25,410,600
+2019-11-20 09:54:33,870 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 09:54:33,898 - movie_genres.movie_genres - ERROR - Exception on /genres/train [POST]
+Traceback (most recent call last):
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/connexion/decorators/decorator.py", line 48, in wrapper
+    response = function(request)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/connexion/decorators/uri_parsing.py", line 173, in wrapper
+    response = function(request)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/connexion/decorators/validation.py", line 194, in wrapper
+    response = function(request)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/connexion/decorators/parameter.py", line 126, in wrapper
+    return function(**kwargs)
+  File "/usr/people/benovaka.nba/projects/movie_genres/movie_genres/movie_genres.py", line 18, in train_post
+    return train_controller.post(body)
+  File "/usr/people/benovaka.nba/projects/movie_genres/movie_genres/api/train/train_controller.py", line 14, in post
+    train(movies)
+  File "/usr/people/benovaka.nba/projects/movie_genres/movie_genres/ml.py", line 12, in train
+    workspace.train(df, TrainConfiguration(), EmbeddingConfiguration())
+  File "/usr/people/benovaka.nba/projects/movie_genres/movie_genres/service/ml/workspace.py", line 63, in train
+    embedding_config, train_config, self.__embeddings.embedding_matrix
+  File "/usr/people/benovaka.nba/projects/movie_genres/movie_genres/service/ml/model.py", line 98, in fit
+    epochs=train_config.epochs, callbacks=callbacks, verbose=1)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/tensorflow_core/python/keras/engine/training.py", line 728, in fit
+    use_multiprocessing=use_multiprocessing)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/tensorflow_core/python/keras/engine/training_v2.py", line 224, in fit
+    distribution_strategy=strategy)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/tensorflow_core/python/keras/engine/training_v2.py", line 497, in _process_training_inputs
+    adapter_cls = data_adapter.select_data_adapter(x, y)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/tensorflow_core/python/keras/engine/data_adapter.py", line 653, in select_data_adapter
+    _type_name(x), _type_name(y)))
+ValueError: Failed to find data adapter that can handle input: <class 'numpy.ndarray'>, <class 'pandas.core.frame.DataFrame'>
+2019-11-20 09:54:33,900 - werkzeug - INFO - 127.0.0.1 - - [20/Nov/2019 09:54:33] "[1m[35mPOST /genres/train HTTP/1.1[0m" 500 -
+2019-11-20 09:54:33,932 - movie_genres.movie_genres - ERROR - Exception on /genres/predict [POST]
+Traceback (most recent call last):
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/connexion/decorators/decorator.py", line 48, in wrapper
+    response = function(request)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/connexion/decorators/uri_parsing.py", line 173, in wrapper
+    response = function(request)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/connexion/decorators/validation.py", line 194, in wrapper
+    response = function(request)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/connexion/decorators/parameter.py", line 126, in wrapper
+    return function(**kwargs)
+  File "/usr/people/benovaka.nba/projects/movie_genres/movie_genres/movie_genres.py", line 23, in predict_post
+    return predict_controller.post(body)
+  File "/usr/people/benovaka.nba/projects/movie_genres/movie_genres/api/predict/predict_controller.py", line 40, in post
+    predictions = predict(movies)
+  File "/usr/people/benovaka.nba/projects/movie_genres/movie_genres/ml.py", line 20, in predict
+    workspace.load()
+  File "/usr/people/benovaka.nba/projects/movie_genres/movie_genres/service/ml/workspace.py", line 100, in load
+    self.__workspace_path / self.__TEXT_PROCESSOR_FILE
+  File "/usr/people/benovaka.nba/projects/movie_genres/movie_genres/service/ml/persistence_util.py", line 16, in load_object
+    with file_path.open("rb") as file:
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/pathlib.py", line 1186, in open
+    opener=self._opener)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/pathlib.py", line 1039, in _opener
+    return self._accessor.open(self, flags, mode)
+FileNotFoundError: [Errno 2] No such file or directory: 'workspace/1/model/text_processor.pickle'
+2019-11-20 09:54:33,934 - werkzeug - INFO - 127.0.0.1 - - [20/Nov/2019 09:54:33] "[1m[35mPOST /genres/predict HTTP/1.1[0m" 500 -
+2019-11-20 09:55:36,908 - root - INFO - API started
+2019-11-20 09:55:36,911 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-11-20 10:01:25,002 - root - INFO - API started
+2019-11-20 10:01:25,003 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-11-20 10:01:31,501 - movie_genres.movie_genres - ERROR - Exception on /genres/train [POST]
+Traceback (most recent call last):
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/connexion/decorators/decorator.py", line 48, in wrapper
+    response = function(request)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/connexion/decorators/uri_parsing.py", line 173, in wrapper
+    response = function(request)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/connexion/decorators/validation.py", line 194, in wrapper
+    response = function(request)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/connexion/decorators/parameter.py", line 126, in wrapper
+    return function(**kwargs)
+  File "/usr/people/benovaka.nba/projects/movie_genres/movie_genres/movie_genres.py", line 18, in train_post
+    return train_controller.post(body)
+  File "/usr/people/benovaka.nba/projects/movie_genres/movie_genres/api/train/train_controller.py", line 12, in post
+    movies = self.read_csv(body)
+  File "/usr/people/benovaka.nba/projects/movie_genres/movie_genres/api/controller.py", line 33, in read_csv
+    return pd.read_csv(BytesIO(body))
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/pandas/io/parsers.py", line 685, in parser_f
+    return _read(filepath_or_buffer, kwds)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/pandas/io/parsers.py", line 457, in _read
+    parser = TextFileReader(fp_or_buf, **kwds)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/pandas/io/parsers.py", line 895, in __init__
+    self._make_engine(self.engine)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/pandas/io/parsers.py", line 1135, in _make_engine
+    self._engine = CParserWrapper(self.f, **self.options)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/pandas/io/parsers.py", line 1917, in __init__
+    self._reader = parsers.TextReader(src, **kwds)
+  File "pandas/_libs/parsers.pyx", line 545, in pandas._libs.parsers.TextReader.__cinit__
+pandas.errors.EmptyDataError: No columns to parse from file
+2019-11-20 10:01:31,509 - werkzeug - INFO - 127.0.0.1 - - [20/Nov/2019 10:01:31] "[1m[35mPOST /genres/train HTTP/1.1[0m" 500 -
+2019-11-20 10:02:01,536 - WorkSpace(1) - INFO - train
+2019-11-20 10:02:02,026 - TextProcessor - DEBUG - TextProcessor
+2019-11-20 10:02:02,026 - TextProcessor - DEBUG - __fit_tokenizer
+2019-11-20 10:02:03,884 - TextProcessor - DEBUG - __tokenize
+2019-11-20 10:02:05,131 - TextProcessor - DEBUG - __pad
+2019-11-20 10:02:05,374 - Embeddings - DEBUG - read_embeddings
+2019-11-20 10:02:26,355 - Model - DEBUG - get_model
+2019-11-20 10:02:26,850 - Model - DEBUG - Model: "model"
+2019-11-20 10:02:26,850 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 10:02:26,850 - Model - DEBUG - Layer (type)                    Output Shape         Param #     Connected to                     
+2019-11-20 10:02:26,850 - Model - DEBUG - ==================================================================================================
+2019-11-20 10:02:26,850 - Model - DEBUG - input_1 (InputLayer)            [(None, 150)]        0                                            
+2019-11-20 10:02:26,850 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 10:02:26,850 - Model - DEBUG - embedding (Embedding)           (None, 150, 300)     25410600    input_1[0][0]                    
+2019-11-20 10:02:26,850 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 10:02:26,851 - Model - DEBUG - bidirectional (Bidirectional)   (None, 150, 256)     330240      embedding[0][0]                  
+2019-11-20 10:02:26,851 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 10:02:26,851 - Model - DEBUG - conv1d (Conv1D)                 (None, 148, 64)      49216       bidirectional[0][0]              
+2019-11-20 10:02:26,851 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 10:02:26,851 - Model - DEBUG - global_average_pooling1d (Globa (None, 64)           0           conv1d[0][0]                     
+2019-11-20 10:02:26,851 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 10:02:26,851 - Model - DEBUG - global_max_pooling1d (GlobalMax (None, 64)           0           conv1d[0][0]                     
+2019-11-20 10:02:26,851 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 10:02:26,851 - Model - DEBUG - concatenate (Concatenate)       (None, 128)          0           global_average_pooling1d[0][0]   
+2019-11-20 10:02:26,851 - Model - DEBUG -                                                                  global_max_pooling1d[0][0]       
+2019-11-20 10:02:26,851 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 10:02:26,851 - Model - DEBUG - dense (Dense)                   (None, 19)           2451        concatenate[0][0]                
+2019-11-20 10:02:26,851 - Model - DEBUG - ==================================================================================================
+2019-11-20 10:02:26,852 - Model - DEBUG - Total params: 25,792,507
+2019-11-20 10:02:26,852 - Model - DEBUG - Trainable params: 381,907
+2019-11-20 10:02:26,852 - Model - DEBUG - Non-trainable params: 25,410,600
+2019-11-20 10:02:26,852 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 10:02:26,879 - movie_genres.movie_genres - ERROR - Exception on /genres/train [POST]
+Traceback (most recent call last):
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/connexion/decorators/decorator.py", line 48, in wrapper
+    response = function(request)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/connexion/decorators/uri_parsing.py", line 173, in wrapper
+    response = function(request)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/connexion/decorators/validation.py", line 194, in wrapper
+    response = function(request)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/connexion/decorators/parameter.py", line 126, in wrapper
+    return function(**kwargs)
+  File "/usr/people/benovaka.nba/projects/movie_genres/movie_genres/movie_genres.py", line 18, in train_post
+    return train_controller.post(body)
+  File "/usr/people/benovaka.nba/projects/movie_genres/movie_genres/api/train/train_controller.py", line 14, in post
+    train(movies)
+  File "/usr/people/benovaka.nba/projects/movie_genres/movie_genres/ml.py", line 12, in train
+    workspace.train(df, TrainConfiguration(), EmbeddingConfiguration())
+  File "/usr/people/benovaka.nba/projects/movie_genres/movie_genres/service/ml/workspace.py", line 63, in train
+    embedding_config, train_config, self.__embeddings.embedding_matrix
+  File "/usr/people/benovaka.nba/projects/movie_genres/movie_genres/service/ml/model.py", line 98, in fit
+    epochs=train_config.epochs, callbacks=callbacks, verbose=1)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/tensorflow_core/python/keras/engine/training.py", line 728, in fit
+    use_multiprocessing=use_multiprocessing)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/tensorflow_core/python/keras/engine/training_v2.py", line 224, in fit
+    distribution_strategy=strategy)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/tensorflow_core/python/keras/engine/training_v2.py", line 497, in _process_training_inputs
+    adapter_cls = data_adapter.select_data_adapter(x, y)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/tensorflow_core/python/keras/engine/data_adapter.py", line 653, in select_data_adapter
+    _type_name(x), _type_name(y)))
+ValueError: Failed to find data adapter that can handle input: <class 'numpy.ndarray'>, <class 'pandas.core.frame.DataFrame'>
+2019-11-20 10:02:26,880 - werkzeug - INFO - 127.0.0.1 - - [20/Nov/2019 10:02:26] "[1m[35mPOST /genres/train HTTP/1.1[0m" 500 -
+2019-11-20 10:05:05,339 - root - INFO - API started
+2019-11-20 10:05:05,340 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-11-20 10:05:08,058 - WorkSpace(1) - INFO - train
+2019-11-20 10:05:08,559 - TextProcessor - DEBUG - TextProcessor
+2019-11-20 10:05:08,560 - TextProcessor - DEBUG - __fit_tokenizer
+2019-11-20 10:05:10,412 - TextProcessor - DEBUG - __tokenize
+2019-11-20 10:05:11,642 - TextProcessor - DEBUG - __pad
+2019-11-20 10:05:11,874 - Embeddings - DEBUG - read_embeddings
+2019-11-20 10:05:33,503 - Model - DEBUG - get_model
+2019-11-20 10:05:34,019 - Model - DEBUG - Model: "model"
+2019-11-20 10:05:34,019 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 10:05:34,020 - Model - DEBUG - Layer (type)                    Output Shape         Param #     Connected to                     
+2019-11-20 10:05:34,020 - Model - DEBUG - ==================================================================================================
+2019-11-20 10:05:34,020 - Model - DEBUG - input_1 (InputLayer)            [(None, 150)]        0                                            
+2019-11-20 10:05:34,020 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 10:05:34,020 - Model - DEBUG - embedding (Embedding)           (None, 150, 300)     25410600    input_1[0][0]                    
+2019-11-20 10:05:34,020 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 10:05:34,020 - Model - DEBUG - bidirectional (Bidirectional)   (None, 150, 256)     330240      embedding[0][0]                  
+2019-11-20 10:05:34,020 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 10:05:34,020 - Model - DEBUG - conv1d (Conv1D)                 (None, 148, 64)      49216       bidirectional[0][0]              
+2019-11-20 10:05:34,020 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 10:05:34,020 - Model - DEBUG - global_average_pooling1d (Globa (None, 64)           0           conv1d[0][0]                     
+2019-11-20 10:05:34,021 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 10:05:34,021 - Model - DEBUG - global_max_pooling1d (GlobalMax (None, 64)           0           conv1d[0][0]                     
+2019-11-20 10:05:34,021 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 10:05:34,021 - Model - DEBUG - concatenate (Concatenate)       (None, 128)          0           global_average_pooling1d[0][0]   
+2019-11-20 10:05:34,021 - Model - DEBUG -                                                                  global_max_pooling1d[0][0]       
+2019-11-20 10:05:34,021 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 10:05:34,021 - Model - DEBUG - dense (Dense)                   (None, 19)           2451        concatenate[0][0]                
+2019-11-20 10:05:34,021 - Model - DEBUG - ==================================================================================================
+2019-11-20 10:05:34,021 - Model - DEBUG - Total params: 25,792,507
+2019-11-20 10:05:34,021 - Model - DEBUG - Trainable params: 381,907
+2019-11-20 10:05:34,021 - Model - DEBUG - Non-trainable params: 25,410,600
+2019-11-20 10:05:34,021 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 10:05:34,048 - movie_genres.movie_genres - ERROR - Exception on /genres/train [POST]
+Traceback (most recent call last):
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/connexion/decorators/decorator.py", line 48, in wrapper
+    response = function(request)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/connexion/decorators/uri_parsing.py", line 173, in wrapper
+    response = function(request)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/connexion/decorators/validation.py", line 194, in wrapper
+    response = function(request)
+  File "/usr/people/benovaka.nba/anaconda3/envs/movie-genres-env/lib/python3.7/site-packages/connexion/decorators/parameter.py", line 126, in wrapper
+    return function(**kwargs)
+  File "/usr/people/benovaka.nba/projects/movie_genres/movie_genres/movie_genres.py", line 18, in train_post
+    return train_controller.post(body)
+  File "/usr/people/benovaka.nba/projects/movie_genres/movie_genres/api/train/train_controller.py", line 14, in post
+    train(movies)
+  File "/usr/people/benovaka.nba/projects/movie_genres/movie_genres/ml.py", line 12, in train
+    workspace.train(df, TrainConfiguration(), EmbeddingConfiguration())
+  File "/usr/people/benovaka.nba/projects/movie_genres/movie_genres/service/ml/workspace.py", line 63, in train
+    embedding_config, train_config, self.__embeddings.embedding_matrix
+  File "/usr/people/benovaka.nba/projects/movie_genres/movie_genres/service/ml/model.py", line 96, in fit
+    model.fit(X.values, y.values, validation_split=train_config.validation_split,
+AttributeError: 'numpy.ndarray' object has no attribute 'values'
+2019-11-20 10:05:34,050 - werkzeug - INFO - 127.0.0.1 - - [20/Nov/2019 10:05:34] "[1m[35mPOST /genres/train HTTP/1.1[0m" 500 -
+2019-11-20 10:06:03,959 - root - INFO - API started
+2019-11-20 10:06:03,960 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-11-20 10:06:06,932 - WorkSpace(1) - INFO - train
+2019-11-20 10:06:07,425 - TextProcessor - DEBUG - TextProcessor
+2019-11-20 10:06:07,426 - TextProcessor - DEBUG - __fit_tokenizer
+2019-11-20 10:06:09,252 - TextProcessor - DEBUG - __tokenize
+2019-11-20 10:06:10,506 - TextProcessor - DEBUG - __pad
+2019-11-20 10:06:10,742 - Embeddings - DEBUG - read_embeddings
+2019-11-20 10:06:35,798 - Model - DEBUG - get_model
+2019-11-20 10:06:36,328 - Model - DEBUG - Model: "model"
+2019-11-20 10:06:36,328 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 10:06:36,328 - Model - DEBUG - Layer (type)                    Output Shape         Param #     Connected to                     
+2019-11-20 10:06:36,328 - Model - DEBUG - ==================================================================================================
+2019-11-20 10:06:36,328 - Model - DEBUG - input_1 (InputLayer)            [(None, 150)]        0                                            
+2019-11-20 10:06:36,328 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 10:06:36,328 - Model - DEBUG - embedding (Embedding)           (None, 150, 300)     25410600    input_1[0][0]                    
+2019-11-20 10:06:36,328 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 10:06:36,329 - Model - DEBUG - bidirectional (Bidirectional)   (None, 150, 256)     330240      embedding[0][0]                  
+2019-11-20 10:06:36,329 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 10:06:36,329 - Model - DEBUG - conv1d (Conv1D)                 (None, 148, 64)      49216       bidirectional[0][0]              
+2019-11-20 10:06:36,329 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 10:06:36,329 - Model - DEBUG - global_average_pooling1d (Globa (None, 64)           0           conv1d[0][0]                     
+2019-11-20 10:06:36,329 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 10:06:36,329 - Model - DEBUG - global_max_pooling1d (GlobalMax (None, 64)           0           conv1d[0][0]                     
+2019-11-20 10:06:36,329 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 10:06:36,329 - Model - DEBUG - concatenate (Concatenate)       (None, 128)          0           global_average_pooling1d[0][0]   
+2019-11-20 10:06:36,329 - Model - DEBUG -                                                                  global_max_pooling1d[0][0]       
+2019-11-20 10:06:36,329 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 10:06:36,329 - Model - DEBUG - dense (Dense)                   (None, 19)           2451        concatenate[0][0]                
+2019-11-20 10:06:36,329 - Model - DEBUG - ==================================================================================================
+2019-11-20 10:06:36,330 - Model - DEBUG - Total params: 25,792,507
+2019-11-20 10:06:36,330 - Model - DEBUG - Trainable params: 381,907
+2019-11-20 10:06:36,330 - Model - DEBUG - Non-trainable params: 25,410,600
+2019-11-20 10:06:36,330 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 10:21:29,142 - werkzeug - INFO - 127.0.0.1 - - [20/Nov/2019 10:21:29] "[37mPOST /genres/train HTTP/1.1[0m" 200 -
+2019-11-20 10:41:51,202 - Model - DEBUG - get_model
+2019-11-20 10:41:51,665 - Model - DEBUG - Model: "model"
+2019-11-20 10:41:51,665 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 10:41:51,665 - Model - DEBUG - Layer (type)                    Output Shape         Param #     Connected to                     
+2019-11-20 10:41:51,665 - Model - DEBUG - ==================================================================================================
+2019-11-20 10:41:51,665 - Model - DEBUG - input_2 (InputLayer)            [(None, 150)]        0                                            
+2019-11-20 10:41:51,665 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 10:41:51,665 - Model - DEBUG - embedding (Embedding)           (None, 150, 300)     25410600    input_2[0][0]                    
+2019-11-20 10:41:51,665 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 10:41:51,666 - Model - DEBUG - bidirectional (Bidirectional)   (None, 150, 256)     330240      embedding[0][0]                  
+2019-11-20 10:41:51,666 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 10:41:51,666 - Model - DEBUG - conv1d (Conv1D)                 (None, 148, 64)      49216       bidirectional[0][0]              
+2019-11-20 10:41:51,666 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 10:41:51,666 - Model - DEBUG - global_average_pooling1d (Globa (None, 64)           0           conv1d[0][0]                     
+2019-11-20 10:41:51,666 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 10:41:51,666 - Model - DEBUG - global_max_pooling1d (GlobalMax (None, 64)           0           conv1d[0][0]                     
+2019-11-20 10:41:51,666 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 10:41:51,666 - Model - DEBUG - concatenate (Concatenate)       (None, 128)          0           global_average_pooling1d[0][0]   
+2019-11-20 10:41:51,666 - Model - DEBUG -                                                                  global_max_pooling1d[0][0]       
+2019-11-20 10:41:51,666 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 10:41:51,667 - Model - DEBUG - dense (Dense)                   (None, 19)           2451        concatenate[0][0]                
+2019-11-20 10:41:51,667 - Model - DEBUG - ==================================================================================================
+2019-11-20 10:41:51,667 - Model - DEBUG - Total params: 25,792,507
+2019-11-20 10:41:51,667 - Model - DEBUG - Trainable params: 381,907
+2019-11-20 10:41:51,668 - Model - DEBUG - Non-trainable params: 25,410,600
+2019-11-20 10:41:51,668 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 10:41:51,803 - TextProcessor - DEBUG - TextProcessor
+2019-11-20 10:41:51,803 - TextProcessor - DEBUG - __tokenize
+2019-11-20 10:41:52,025 - TextProcessor - DEBUG - __pad
+2019-11-20 10:41:52,069 - Model - DEBUG - predict
+2019-11-20 10:42:15,462 - werkzeug - INFO - 127.0.0.1 - - [20/Nov/2019 10:42:15] "[37mPOST /genres/predict HTTP/1.1[0m" 200 -
+2019-11-20 11:10:35,044 - root - INFO - API started
+2019-11-20 11:10:35,047 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-11-20 11:11:19,062 - WorkSpace(1) - INFO - train
+2019-11-20 11:11:19,608 - TextProcessor - DEBUG - TextProcessor
+2019-11-20 11:11:19,609 - TextProcessor - DEBUG - __fit_tokenizer
+2019-11-20 11:11:21,599 - TextProcessor - DEBUG - __tokenize
+2019-11-20 11:11:22,948 - TextProcessor - DEBUG - __pad
+2019-11-20 11:11:23,206 - Embeddings - DEBUG - read_embeddings
+2019-11-20 11:11:46,470 - Model - DEBUG - get_model
+2019-11-20 11:11:47,276 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 11:11:47,276 - Model - DEBUG - Layer (type)                    Output Shape         Param #     Connected to                     
+2019-11-20 11:11:47,276 - Model - DEBUG - ==================================================================================================
+2019-11-20 11:11:47,276 - Model - DEBUG - input_1 (InputLayer)            (None, 150)          0                                            
+2019-11-20 11:11:47,276 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 11:11:47,276 - Model - DEBUG - embedding (Embedding)           (None, 150, 300)     25410600    input_1[0][0]                    
+2019-11-20 11:11:47,276 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 11:11:47,276 - Model - DEBUG - bidirectional (Bidirectional)   (None, 150, 256)     329472      embedding[0][0]                  
+2019-11-20 11:11:47,276 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 11:11:47,276 - Model - DEBUG - conv1d (Conv1D)                 (None, 148, 64)      49216       bidirectional[0][0]              
+2019-11-20 11:11:47,277 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 11:11:47,277 - Model - DEBUG - global_average_pooling1d (Globa (None, 64)           0           conv1d[0][0]                     
+2019-11-20 11:11:47,277 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 11:11:47,277 - Model - DEBUG - global_max_pooling1d (GlobalMax (None, 64)           0           conv1d[0][0]                     
+2019-11-20 11:11:47,277 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 11:11:47,277 - Model - DEBUG - concatenate (Concatenate)       (None, 128)          0           global_average_pooling1d[0][0]   
+2019-11-20 11:11:47,277 - Model - DEBUG -                                                                  global_max_pooling1d[0][0]       
+2019-11-20 11:11:47,277 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 11:11:47,277 - Model - DEBUG - dense (Dense)                   (None, 19)           2451        concatenate[0][0]                
+2019-11-20 11:11:47,277 - Model - DEBUG - ==================================================================================================
+2019-11-20 11:11:47,277 - Model - DEBUG - Total params: 25,791,739
+2019-11-20 11:11:47,277 - Model - DEBUG - Trainable params: 381,139
+2019-11-20 11:11:47,277 - Model - DEBUG - Non-trainable params: 25,410,600
+2019-11-20 11:11:47,277 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 11:14:03,616 - root - INFO - API started
+2019-11-20 11:14:03,619 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-11-20 11:14:07,111 - werkzeug - INFO - 127.0.0.1 - - [20/Nov/2019 11:14:07] "[37mPOST /genres/train HTTP/1.1[0m" 201 -
+2019-11-20 11:14:35,253 - Model - DEBUG - get_model
+2019-11-20 11:14:36,015 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 11:14:36,015 - Model - DEBUG - Layer (type)                    Output Shape         Param #     Connected to                     
+2019-11-20 11:14:36,015 - Model - DEBUG - ==================================================================================================
+2019-11-20 11:14:36,015 - Model - DEBUG - input_1 (InputLayer)            (None, 150)          0                                            
+2019-11-20 11:14:36,015 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 11:14:36,015 - Model - DEBUG - embedding (Embedding)           (None, 150, 300)     25410600    input_1[0][0]                    
+2019-11-20 11:14:36,015 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 11:14:36,015 - Model - DEBUG - bidirectional (Bidirectional)   (None, 150, 256)     329472      embedding[0][0]                  
+2019-11-20 11:14:36,016 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 11:14:36,016 - Model - DEBUG - conv1d (Conv1D)                 (None, 148, 64)      49216       bidirectional[0][0]              
+2019-11-20 11:14:36,016 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 11:14:36,016 - Model - DEBUG - global_average_pooling1d (Globa (None, 64)           0           conv1d[0][0]                     
+2019-11-20 11:14:36,016 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 11:14:36,016 - Model - DEBUG - global_max_pooling1d (GlobalMax (None, 64)           0           conv1d[0][0]                     
+2019-11-20 11:14:36,016 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 11:14:36,016 - Model - DEBUG - concatenate (Concatenate)       (None, 128)          0           global_average_pooling1d[0][0]   
+2019-11-20 11:14:36,016 - Model - DEBUG -                                                                  global_max_pooling1d[0][0]       
+2019-11-20 11:14:36,016 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 11:14:36,016 - Model - DEBUG - dense (Dense)                   (None, 19)           2451        concatenate[0][0]                
+2019-11-20 11:14:36,016 - Model - DEBUG - ==================================================================================================
+2019-11-20 11:14:36,017 - Model - DEBUG - Total params: 25,791,739
+2019-11-20 11:14:36,017 - Model - DEBUG - Trainable params: 381,139
+2019-11-20 11:14:36,017 - Model - DEBUG - Non-trainable params: 25,410,600
+2019-11-20 11:14:36,017 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 11:14:36,293 - TextProcessor - DEBUG - TextProcessor
+2019-11-20 11:14:36,293 - TextProcessor - DEBUG - __tokenize
+2019-11-20 11:14:36,490 - TextProcessor - DEBUG - __pad
+2019-11-20 11:14:36,551 - Model - DEBUG - predict
+2019-11-20 11:14:36,742 - movie_genres.movie_genres - ERROR - Exception on /genres/predict [POST]
+Traceback (most recent call last):
+  File "/usr/people/benovaka.nba/anaconda3/lib/python3.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/people/benovaka.nba/anaconda3/lib/python3.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/people/benovaka.nba/anaconda3/lib/python3.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/people/benovaka.nba/anaconda3/lib/python3.7/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/usr/people/benovaka.nba/anaconda3/lib/python3.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/people/benovaka.nba/anaconda3/lib/python3.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/people/benovaka.nba/anaconda3/lib/python3.7/site-packages/connexion/decorators/decorator.py", line 48, in wrapper
+    response = function(request)
+  File "/usr/people/benovaka.nba/anaconda3/lib/python3.7/site-packages/connexion/decorators/uri_parsing.py", line 143, in wrapper
+    response = function(request)
+  File "/usr/people/benovaka.nba/anaconda3/lib/python3.7/site-packages/connexion/decorators/validation.py", line 172, in wrapper
+    response = function(request)
+  File "/usr/people/benovaka.nba/anaconda3/lib/python3.7/site-packages/connexion/decorators/parameter.py", line 126, in wrapper
+    return function(**kwargs)
+  File "/usr/people/benovaka.nba/projects/movie_genres/movie_genres/movie_genres.py", line 23, in predict_post
+    return predict_controller.post(body)
+  File "/usr/people/benovaka.nba/projects/movie_genres/movie_genres/api/predict/predict_controller.py", line 40, in post
+    predictions = predict(movies)
+  File "/usr/people/benovaka.nba/projects/movie_genres/movie_genres/ml.py", line 22, in predict
+    pred_df = workspace.predict(df)
+  File "/usr/people/benovaka.nba/projects/movie_genres/movie_genres/service/ml/workspace.py", line 79, in predict
+    predictions = self.__model.predict(x_test_seq_pad)
+  File "/usr/people/benovaka.nba/projects/movie_genres/movie_genres/service/ml/model.py", line 118, in predict
+    predictions = self.__model.predict(X)
+  File "/usr/people/benovaka.nba/anaconda3/lib/python3.7/site-packages/tensorflow/python/keras/engine/training.py", line 1113, in predict
+    self, x, batch_size=batch_size, verbose=verbose, steps=steps)
+  File "/usr/people/benovaka.nba/anaconda3/lib/python3.7/site-packages/tensorflow/python/keras/engine/training_arrays.py", line 329, in model_iteration
+    batch_outs = f(ins_batch)
+  File "/usr/people/benovaka.nba/anaconda3/lib/python3.7/site-packages/tensorflow/python/keras/backend.py", line 3076, in __call__
+    run_metadata=self.run_metadata)
+  File "/usr/people/benovaka.nba/anaconda3/lib/python3.7/site-packages/tensorflow/python/client/session.py", line 1439, in __call__
+    run_metadata_ptr)
+  File "/usr/people/benovaka.nba/anaconda3/lib/python3.7/site-packages/tensorflow/python/framework/errors_impl.py", line 528, in __exit__
+    c_api.TF_GetCode(self.status.status))
+tensorflow.python.framework.errors_impl.InvalidArgumentError: Biases must be 1D: [2,384]
+	 [[{{node bidirectional/while/BiasAdd}}]]
+2019-11-20 11:14:36,750 - werkzeug - INFO - 127.0.0.1 - - [20/Nov/2019 11:14:36] "[1m[35mPOST /genres/predict HTTP/1.1[0m" 500 -
+2019-11-20 11:14:50,948 - werkzeug - INFO - 127.0.0.1 - - [20/Nov/2019 11:14:50] "[37mPOST /genres/train HTTP/1.1[0m" 201 -
+2019-11-20 11:15:00,871 - werkzeug - INFO - 127.0.0.1 - - [20/Nov/2019 11:15:00] "[37mPOST /genres/train HTTP/1.1[0m" 201 -
+2019-11-20 11:15:07,637 - root - INFO - API started
+2019-11-20 11:15:07,641 - werkzeug - INFO -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2019-11-20 11:15:07,984 - WorkSpace(1) - INFO - train
+2019-11-20 11:15:08,545 - TextProcessor - DEBUG - TextProcessor
+2019-11-20 11:15:08,545 - TextProcessor - DEBUG - __fit_tokenizer
+2019-11-20 11:15:10,475 - TextProcessor - DEBUG - __tokenize
+2019-11-20 11:15:11,829 - TextProcessor - DEBUG - __pad
+2019-11-20 11:15:12,099 - Embeddings - DEBUG - read_embeddings
+2019-11-20 11:15:35,167 - Model - DEBUG - get_model
+2019-11-20 11:15:35,944 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 11:15:35,944 - Model - DEBUG - Layer (type)                    Output Shape         Param #     Connected to                     
+2019-11-20 11:15:35,944 - Model - DEBUG - ==================================================================================================
+2019-11-20 11:15:35,944 - Model - DEBUG - input_1 (InputLayer)            (None, 150)          0                                            
+2019-11-20 11:15:35,944 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 11:15:35,945 - Model - DEBUG - embedding (Embedding)           (None, 150, 300)     25410600    input_1[0][0]                    
+2019-11-20 11:15:35,945 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 11:15:35,945 - Model - DEBUG - bidirectional (Bidirectional)   (None, 150, 256)     329472      embedding[0][0]                  
+2019-11-20 11:15:35,945 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 11:15:35,945 - Model - DEBUG - conv1d (Conv1D)                 (None, 148, 64)      49216       bidirectional[0][0]              
+2019-11-20 11:15:35,945 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 11:15:35,945 - Model - DEBUG - global_average_pooling1d (Globa (None, 64)           0           conv1d[0][0]                     
+2019-11-20 11:15:35,945 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 11:15:35,945 - Model - DEBUG - global_max_pooling1d (GlobalMax (None, 64)           0           conv1d[0][0]                     
+2019-11-20 11:15:35,945 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 11:15:35,945 - Model - DEBUG - concatenate (Concatenate)       (None, 128)          0           global_average_pooling1d[0][0]   
+2019-11-20 11:15:35,945 - Model - DEBUG -                                                                  global_max_pooling1d[0][0]       
+2019-11-20 11:15:35,945 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 11:15:35,945 - Model - DEBUG - dense (Dense)                   (None, 19)           2451        concatenate[0][0]                
+2019-11-20 11:15:35,945 - Model - DEBUG - ==================================================================================================
+2019-11-20 11:15:35,946 - Model - DEBUG - Total params: 25,791,739
+2019-11-20 11:15:35,946 - Model - DEBUG - Trainable params: 381,139
+2019-11-20 11:15:35,946 - Model - DEBUG - Non-trainable params: 25,410,600
+2019-11-20 11:15:35,946 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 11:20:18,480 - werkzeug - INFO - 127.0.0.1 - - [20/Nov/2019 11:20:18] "[37mPOST /genres/train HTTP/1.1[0m" 201 -
+2019-11-20 11:27:19,751 - Model - DEBUG - get_model
+2019-11-20 11:27:20,481 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 11:27:20,481 - Model - DEBUG - Layer (type)                    Output Shape         Param #     Connected to                     
+2019-11-20 11:27:20,481 - Model - DEBUG - ==================================================================================================
+2019-11-20 11:27:20,481 - Model - DEBUG - input_1 (InputLayer)            (None, 150)          0                                            
+2019-11-20 11:27:20,482 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 11:27:20,482 - Model - DEBUG - embedding (Embedding)           (None, 150, 300)     25410600    input_1[0][0]                    
+2019-11-20 11:27:20,482 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 11:27:20,482 - Model - DEBUG - bidirectional (Bidirectional)   (None, 150, 256)     329472      embedding[0][0]                  
+2019-11-20 11:27:20,482 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 11:27:20,482 - Model - DEBUG - conv1d (Conv1D)                 (None, 148, 64)      49216       bidirectional[0][0]              
+2019-11-20 11:27:20,482 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 11:27:20,482 - Model - DEBUG - global_average_pooling1d (Globa (None, 64)           0           conv1d[0][0]                     
+2019-11-20 11:27:20,482 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 11:27:20,482 - Model - DEBUG - global_max_pooling1d (GlobalMax (None, 64)           0           conv1d[0][0]                     
+2019-11-20 11:27:20,482 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 11:27:20,482 - Model - DEBUG - concatenate (Concatenate)       (None, 128)          0           global_average_pooling1d[0][0]   
+2019-11-20 11:27:20,482 - Model - DEBUG -                                                                  global_max_pooling1d[0][0]       
+2019-11-20 11:27:20,482 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 11:27:20,482 - Model - DEBUG - dense (Dense)                   (None, 19)           2451        concatenate[0][0]                
+2019-11-20 11:27:20,482 - Model - DEBUG - ==================================================================================================
+2019-11-20 11:27:20,483 - Model - DEBUG - Total params: 25,791,739
+2019-11-20 11:27:20,483 - Model - DEBUG - Trainable params: 381,139
+2019-11-20 11:27:20,483 - Model - DEBUG - Non-trainable params: 25,410,600
+2019-11-20 11:27:20,483 - Model - DEBUG - __________________________________________________________________________________________________
+2019-11-20 11:27:20,799 - TextProcessor - DEBUG - TextProcessor
+2019-11-20 11:27:20,799 - TextProcessor - DEBUG - __tokenize
+2019-11-20 11:27:21,001 - TextProcessor - DEBUG - __pad
+2019-11-20 11:27:21,042 - Model - DEBUG - predict
+2019-11-20 11:27:40,015 - werkzeug - INFO - 127.0.0.1 - - [20/Nov/2019 11:27:40] "[37mPOST /genres/predict HTTP/1.1[0m" 200 -

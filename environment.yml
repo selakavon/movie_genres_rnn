@@ -1,0 +1,16 @@
+# You may add dependencies, but please don't remove any!
+name: movie-genres-env
+dependencies:
+  - flake8
+  - flask
+  - joblib
+  - nomkl
+  - pandas
+  - python=3.7
+  - pip
+  - scikit-learn
+  - pip:
+    - tensorflow
+    - dataclasses_json
+    - connexion
+
